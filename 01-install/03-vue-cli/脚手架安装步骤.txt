@@ -1,0 +1,7 @@
+1.打开cli.vuejs.org 点击get started快速开始
+2.找到install
+3.看到如下：npm i -g @vue/cli or yarn global add @vue/cli
+4.Git打开文件夹按照以上安装
+5.在父文件夹：vue create my-project(项目文件夹名) 在当前文件夹：vue create .
+6.完成5步骤根据自己选择安装
+7.安装完后会有提示项目起到8080端口
