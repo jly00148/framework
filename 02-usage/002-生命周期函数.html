@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p ref='p'>{{message}}</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'hello'
+        },
+        beforeCreate(){
+            console.log('beforeCreate');
+            console.log('this.$el',this.$el);// undefined
+            console.log('this.$refs.p',this.$refs.p);// undefined
+            console.log('this.message',this.message);// undefined
+        },
+        created(){
+            console.log('created');
+            console.log('this.$el',this.$el);// undefined
+            console.log('this.$refs.p',this.$refs.p);// undefined
+            console.log('this.message',this.message);// hello
+        },
+        beforeMount(){
+            console.log('beforeMount');
+            console.log('this.$el',this.$el);// <div id="app"><p ref='p'>{{message}}</p></div>
+            console.log('this.$refs.p',this.$refs.p);// undefined
+            console.log('this.message',this.message);// hello
+        },
+        mounted(){
+            console.log('mounted');
+            console.log('this.$el',this.$el);// <div id="app"><p ref='p'>{{message}}</p></div>
+            console.log('this.$refs.p',this.$refs.p);// <p>hello</p>
+            console.log('this.message',this.message);// hello
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate');
+        },
+        updated(){
+            console.log('updated');
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy');
+        },
+        destroyed(){
+            console.log('destroyed');
+        }
+    })
+
+
+</script>
+</html>
