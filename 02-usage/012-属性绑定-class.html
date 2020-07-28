@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        .active{
+            background-color: green;
+        }
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>我是文字</p>
+        <p class="active error">class="active error"</p>
+        <p :class="{active:true}">:class="{active:true}"</p>
+        <p :class="{active:true,error:true}">:class="{active:true,error:true}"</p>
+        <p :class="{active:isActive,error:isError}">:class="{active:isActive,error:isError}"</p>
+
+        <!--数组语法-->
+        <p :class="['active','error']">:class="['active' 'error']"</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isActive:true,
+            isError:true
+        }
+    })
+</script>   
+</html>
