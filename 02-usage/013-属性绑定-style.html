@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p style="background-color: red;color: yellow;">style="background-color: red;color: yellow;"</p>
+        <p :style="{backgroundColor: 'red',color:'yellow'}">:style="{backgroundColor: 'red',color:'yellow'}"</p>
+        <p :style="{backgroundColor:bg,color:col}">:style="{backgroundColor:bg,color:col}"</p>
+        <p :style="[{backgroundColor:bg},{color:col}]">:style="[{backgroundColor:bg},{color:col}]"</p>
+        <p :style="objStyle">:style="objStyle"</p>
+        <p :style="arrStyle">:style="arrStyle"</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            bg:'red',
+            col:'yellow',
+            objStyle:{
+                backgroundColor:'red',
+                color:'yellow'
+            },
+            arrStyle:[
+                {backgroundColor:'red'},
+                {color:'yellow'}
+            ]
+        }
+    })
+</script>   
+</html>
