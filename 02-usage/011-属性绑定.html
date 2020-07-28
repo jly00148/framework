@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <a href="https://www.taobao.com">淘宝</a>
+        <!-- <a href="{{taobaoUrl}}">淘宝</a> --><!--不可以-->
+        <a v-bind:href="taobaoUrl">淘宝</a><!--可以-->
+        <a :href="taobaoUrl">淘宝</a><!--简写-->
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            taobaoUrl:"https://www.taobao.com"
+        }
+    })
+</script>   
+</html>
