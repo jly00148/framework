@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="fullName">
+        <p>firstName:{{firstName}}</p>
+        <p>lastName:{{lastName}}</p>
+        <p>getFullName:{{getFullName()}}</p>
+        <p>getFullName:{{fullName}}</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            firstName:'jiang',
+            lastName:'liaoyuan'
+        },
+        methods:{
+            getFullName(){
+                return this.firstName + ' ' + this.lastName;
+            }
+        },
+        computed:{
+            // fullName(){
+            //     return this.firstName + this.lastName;
+            // },
+            fullName:{
+                get(){//等价上面写法
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set(newValue){
+                    const names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            },
+        }
+    })
+    console.log(vm);
+</script>
+</html>
