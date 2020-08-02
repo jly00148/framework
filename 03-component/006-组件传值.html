@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <todo-item task='睡觉'></todo-item>
+        <todo-item task='crossfire'></todo-item>
+    </div>
+    
+    <template id="todo-item">
+        <div>{{task}}</div>
+    </template>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var todoItem = Vue.extend({
+        data(){
+            return {
+
+            }
+        },
+        template:'#todo-item',
+        // props:['task']
+        props:{
+            task:String
+        }
+    })
+
+    //注册
+    Vue.component('todo-item',todoItem);
+
+    var vm1 = new Vue({
+        el:'#app',
+        data:{
+
+        },
+    })
+</script>
+</html>
