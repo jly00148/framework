@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <div id="app2">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <template id="button-counter">
+        <button @click="count++">我被点击了{{count}}次</button>
+    </template>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 定义
+    // 方法一
+    /*
+    var buttonCounter = {
+        data(){
+            return {
+                count:0
+            }
+        },
+        template:'#button-counter'
+    }
+    */
+
+    // 方法二
+    var buttonCounter = Vue.extend({
+        data(){
+            return {
+                count:0
+            }
+        },
+        template:'#button-counter'
+    })
+
+    //注册
+    Vue.component('button-counter',buttonCounter);
+
+    var vm1 = new Vue({
+        el:'#app1',
+        data:{
+
+        },
+    })
+
+    var vm2 = new Vue({
+        el:'#app2',
+        data:{
+
+        },
+    })
+</script>
+</html>
