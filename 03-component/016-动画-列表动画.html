@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            box-sizing: border-box;
+            padding: 10px;
+
+        }
+        li{
+            list-style: none;
+            height: 40px;
+            line-height: 40px;
+            border: 1px dotted #000;
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="wrap">
+            <input type="text" v-model="task">
+            <button @click="add()">添加</button>
+            <ul>
+                <li v-for = "(item,index) in items"
+                    @click="del(index)"
+                >
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm1 = new Vue({
+        el:'#app',
+        data:{
+            items:[
+                'crossfire',
+                'lol'
+            ],
+            task:''
+        },
+        methods:{
+            add(){
+                this.items.push(this.task)
+                this.task = ''
+            },
+            del(index){
+                this.items.splice(index,1);
+            }
+        }
+    })
+ 
+</script>
+</html>
