@@ -17,40 +17,55 @@
         data:{
             message:'hello'
         },
+        //组件创建前
         beforeCreate(){
             console.log('beforeCreate');
             console.log('this.$el',this.$el);// undefined
             console.log('this.$refs.p',this.$refs.p);// undefined
             console.log('this.message',this.message);// undefined
         },
-        created(){
+
+        //组件创建后
+        created(){//可以访问props或者data中的数据，这时候组件还没被挂载，所以是看不到的
             console.log('created');
             console.log('this.$el',this.$el);// undefined
             console.log('this.$refs.p',this.$refs.p);// undefined
             console.log('this.message',this.message);// hello
             console.log('this.$data.message',this.$data.message);// hello
         },
-        beforeMount(){
+        
+        //组件挂载前
+        beforeMount(){//开始创建虚拟DOM
             console.log('beforeMount');
             console.log('this.$el',this.$el);// <div id="app"><p ref='p'>{{message}}</p></div>
             console.log('this.$refs.p',this.$refs.p);// undefined
             console.log('this.message',this.message);// hello
         },
-        mounted(){
+
+        //组件挂载后
+        mounted(){//将虚拟DOM渲染为真实DOM并且渲染师数据，多应用于发送网络请求获取数据
             console.log('mounted');
             console.log('this.$el',this.$el);// <div id="app"><p ref='p'>{{message}}</p></div>
             console.log('this.$refs.p',this.$refs.p);// <p>hello</p>
             console.log('this.message',this.message);// hello
         },
+
+        //数据更新前
         beforeUpdate(){
             console.log('beforeUpdate');
         },
+
+        //数据更新后
         updated(){
             console.log('updated');
         },
+
+        //数据销毁前 执行必要的清除操作 如清除定时器 取消网络请求
         beforeDestroy(){
             console.log('beforeDestroy');
         },
+
+        //数据销毁后
         destroyed(){
             console.log('destroyed');
         }
