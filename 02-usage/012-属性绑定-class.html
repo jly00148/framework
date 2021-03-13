@@ -27,9 +27,11 @@
         <p :class="{active:true}">:class="{active:true}"</p>
         <p :class="{active:true,error:true}">:class="{active:true,error:true}"</p>
         <p :class="{active:isActive,error:isError}">:class="{active:isActive,error:isError}"</p>
-
-        <!--数组语法-->
-        <p :class="['active','error']">:class="['active' 'error']"</p>
+        <p :class="objClass">:class="objClass"</p>
+        <p :class="['active','error']">:class="['active','error']"</p>
+        <p :class="[isActive ? 'active' :'',isError ? 'error' :'']">:class="['isActive ? active',isError ? 'error']"</p>
+        <p :class="arrClass">:class="arrClass</p>
+        <p :class="strClass">:class="strClass</p>
     </div>
 </body>
 <script src="js/vue.js"></script>
@@ -38,7 +40,15 @@
         el:'#app',
         data:{
             isActive:true,
-            isError:true
+            isError:true,
+            
+            //对象写法
+            objClass:{
+                active:true,
+                error:true
+            },
+            arrClass:['active','error'],
+            strClass:'active error'
         }
     })
 </script>   
