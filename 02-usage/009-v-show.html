@@ -9,6 +9,7 @@
     <div id="app">
         <input type="text" v-model="score" />
         <p>你的成绩:{{score}}</p>
+        <!-- v-show 只是改变元素的css属性display -->
         <p v-show ="score>=60">及格</p>
         <p v-show ="score < 60">不及格</p>
     </div>

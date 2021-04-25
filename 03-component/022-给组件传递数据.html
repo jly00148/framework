@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<father-component></father-component>
+	</div>
+
+	<template id="fatherComponent">
+		<div>
+			<p>{{fathermsg}}</p>
+			<son-component sonmsg="fathermsg"></son-component>
+		</div>
+	</template>
+
+	<template id="sonComponent">
+		<p>{{sonmsg}}</p>
+	</template>
+</body>
+
+
+<script src="js/vue.js"></script>
+<script>
+
+	var SonComponent = Vue.extend({
+		template:'#sonComponent',
+		data(){
+			return {
+				sonmsg:'sonComponent msg'
+			}
+		},
+		// props:{
+		// 	sonmsg:String
+		// }
+	})	
+
+	var FatherComponent = Vue.extend({
+		template:'#fatherComponent',
+		data(){
+			return {
+				fathermsg:'father-Component msg'
+			}
+		},
+		components:{
+			'sonComponent':SonComponent
+		}
+	})
+
+
+
+
+    var app = new Vue({
+        el:'#app',
+        components:{
+        	'father-component':FatherComponent
+        }
+    })
+</script>
+</html>
