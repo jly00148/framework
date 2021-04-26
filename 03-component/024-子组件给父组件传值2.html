@@ -11,7 +11,10 @@
 	</div>	
 <!-- ------------------------------------------------------------ -->
 	<template id="sonComponent">
-		<p>this is son get score is :{{sonscore}}</p>
+		<div>
+			<p>this is son get score is:{{sonscore}}</p>
+			<input type="number" name="" v-model="extra_score">
+		</div>
 	</template>
 <!-- ------------------------------------------------------------ -->
 
@@ -32,7 +35,18 @@
 	var Scomponent = Vue.extend({
 		template:'#sonComponent',
 		props:{
-			sonscore:Number //接收并且制定类型
+			sonscore:Number,
+		},
+		data(){
+			return {
+				extra_score:0
+			}
+		},
+		watch:{
+			extra_score(){
+
+				this.$parent.addExtraScore(this.extra_score)
+			}
 		}
 	})
 
@@ -46,7 +60,12 @@
 		//注册子组件
 		components:{
 			'son-component':Scomponent
-		}
+		},
+		methods:{
+			addExtraScore(extra_score){
+				this.fathescore = this.fathescore + parseInt(extra_score)
+			}
+		},
 	})
 
 
