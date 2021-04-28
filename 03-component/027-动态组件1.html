@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<button @click="currentComponent ='tab-home' ">home</button>
+			<button @click="currentComponent ='tab-articles' ">articles</button>
+			<component :is="currentComponent"></component>
+		</div>
+
+	</div>	
+	<template id="cop1">
+		<div>这里显示的是组件1</div>
+	</template>
+	<template id="cop2">
+		<div>这里显示的是组件2</div>
+	</template>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+	
+	// 写法1:
+	// var Component1 = Vue.extend({
+		// template:'#cop1'
+	// })
+	// var Component2 = Vue.extend({
+		// template:'#cop2'
+	// })
+	// Vue.component('tab-home',Component1)
+	// Vue.component('tab-articles',Component2)
+	// -----------------------------------------------------------
+
+	// 写法2:
+	var Component1 = Vue.component('tab-home',{
+		template:'#cop1',
+	})
+
+	var Component2 = Vue.component('tab-articles',{
+		template:'#cop2',
+	})
+
+	// --------------------------------------------------------------
+
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			currentComponent:'tab-home'
+		}
+	})
+
+	
+
+
+</script>
+</html>
