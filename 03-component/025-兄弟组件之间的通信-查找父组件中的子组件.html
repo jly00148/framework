@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<father-component></father-component>
+	</div>	
+<!-- ------------------------------------------------------------ -->
+	<template id="sonComponent1">
+		<div>
+			<p>this is son1 get score is:{{extra_score1}}</p>
+			<input type="number" name="" v-model.number="extra_score1">
+		</div>
+	</template>
+
+	<template id="sonComponent2">
+		<div>
+			<p>this is son2 get score is:{{extra_score2}}</p>
+			<input type="number" name="" v-model.number="extra_score2">
+
+			<div>获取son1的值<p>is {{new_extra_score1}}</p></div>
+			<span>总相加的值</span><input type="" name="" v-model="total_score">
+		</div>
+	</template>	
+<!-- ------------------------------------------------------------ -->
+
+	<template id="fatherComponent">
+		<div>
+			<son-component1 :sonscore="fathescore"></son-component1>
+			<son-component2 :sonscore="fathescore"></son-component2>
+		</div>
+
+	</template>
+
+</body>
+
+
+<script src="js/vue.js"></script>
+<script>
+
+	var Scomponent1 = Vue.extend({
+		template:'#sonComponent1',
+		data(){
+			return {
+				extra_score1:0
+			}
+		},
+		watch:{
+			extra_score1(){
+			}
+		}
+	})
+
+	var Scomponent2 = Vue.extend({
+		template:'#sonComponent2',
+		data(){
+			return {
+				extra_score2:0,
+				new_extra_score1:0,
+			}
+		},
+		watch:{
+			extra_score2(){
+				// this.total_score = this.$parent.$children[0].extra_score1 + this.extra_score2
+
+				// 问题1:this.$parent.$children[0]不能保证是想要获取的的子组件
+				// 问题2:计算所得到的结果必需以来第二子组件的watch的方法才行
+				this.new_extra_score1= this.$parent.$children[0].extra_score1
+			}
+		},
+		computed:{
+			total_score(){
+				return this.new_extra_score1 + this.extra_score2
+			}
+		}
+	})
+
+// -----------------------------------------------------------------
+	var Fcomponent = Vue.extend({
+		template:'#fatherComponent',
+		data(){
+			return {
+				fathescore:18
+			}
+		},
+		//注册子组件
+		components:{
+			'son-component1':Scomponent1,
+			'son-component2':Scomponent2
+		},
+		methods:{
+			addExtraScore(extra_score){
+				this.fathescore = this.fathescore + parseInt(extra_score)
+			}
+		},
+	})
+
+
+
+
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			message:18
+		},
+		components:{
+			'father-component':Fcomponent
+		}
+	})
+
+</script>
+</html>
