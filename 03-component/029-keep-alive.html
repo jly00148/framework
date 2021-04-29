@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    	.active{
+    		border-right: 10px dashed red;
+    	}
+    </style>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<button
+				v-for="(tab,index) in tabs"
+				@click="selectIndex = index"
+			>
+			{{tab}}
+			</button>
+			<!-- 用keep-alive组件包裹:切换组件保持组件的状态，一面反复重新渲染消耗性能 -->
+			<keep-alive>
+				<component :is="currentComponent1"></component>
+			<keep-alive>
+		</div>
+
+	</div>	
+	<template id="cop1">
+		<div>这里显示的是组件1</div>
+	</template>
+
+	<template id="cop2">
+		<div>
+			<ul>
+				<li 
+					v-for="article in articles" 
+					:key="article.id"
+
+					@click="selectedArticle = article" 
+					:class="{active:selectedArticle == article}"
+					>
+					{{article.title}}
+				</li>
+
+			</ul>
+			<div v-if="selectedArticle">
+				{{selectedArticle.content}} <!-- @click="selectedArticle = article" 点击哪个按钮 将selectedArticle赋值给article中的拿个对象 -->
+			</div>
+		</div>
+	</template>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+	
+	Vue.component('tab-home',{
+		template:'#cop1',
+	})
+
+	Vue.component('tab-articles',{
+		template:'#cop2',
+		data(){
+			return {
+				articles:[
+					{id:1,title:'vue',content:'Vue是渐进式框架'},
+					{id:2,title:'react',content:'React是前端UI框架'}
+				],
+				selectedArticle:null
+			}
+		}
+	})
+
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			tabs:['tab-home','tab-articles'],
+			selectIndex:0
+		},
+		computed:{
+			currentComponent1(){
+				return this.tabs[this.selectIndex]
+			}
+		}
+	})
+
+	
+
+
+</script>
+</html>
