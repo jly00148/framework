@@ -8,6 +8,9 @@
 <body>
     <div id="app">
         <nav>
+            <!-- 使用router-link 组件来导航 -->
+            <!-- 通过传入 `to` 属性指定链接 -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
             <router-link to="/home">home</router-link>
             <router-link to="/articles">articles</router-link>
             <router-link to="/about">about</router-link>
@@ -33,7 +36,7 @@
 <script src="js/vue-router.js"></script>
 <script>
 
-    //1.定义路由(组件)：
+    //1.第一步定义路由(组件)：
     var Home = Vue.extend({
         template:'#home'
     })
@@ -44,7 +47,7 @@
         template:'#about'
     })
 
-    //2.定义路由：
+    //2.第二步定义路由：
     var routes = [
         { 
             path:'/home',
@@ -59,12 +62,12 @@
         } ,           
     ]
 
-    //3.创建router的实例，然后传'routes'配制
+    //3.第三步创建router的实例，然后传'routes'配制，可以传别的配制参数
     var router = new VueRouter({
         routes:routes // (缩写) 相当于：routes：routes
     })
 
-    // 4.创建和挂载根实例
+    // 4.第四步创建和挂载根实例
     var vm = new Vue({
         el:'#app',
         router:router,
