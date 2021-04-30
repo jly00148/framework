@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+	<div id="app">
+		<p :title="price | formatPrice">{{price | formatPrice}}</p>
+	</div>	
+	<div id="app1">
+		<p :title="price | formatPrice">{{price | formatPrice}}</p>
+	</div>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+	//注册一个局部过滤器，仅仅在当前实例中使用
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			price:88
+		},
+		filters	:{
+			formatPrice:function(price){
+				return '￥'+price.toFixed(2)//显示到p标签作为文本并且保留小数点后两位
+			}
+		}
+	})
+
+	var vm = new Vue({
+		el:'#app1',
+		data:{
+			price:99
+		}
+	})
+</script>
+</html>
