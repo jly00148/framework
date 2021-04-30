@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+	<div id="app">
+		<input type="" name="" v-focus1>
+	</div>	
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+	Vue.directive('focus1',{
+		inserted:function(el){
+			// console.log(el) input DOM节点
+			el.focus()
+		}
+	}
+
+	)
+
+	var vm = new Vue({
+		el:'#app',
+	})
+
+</script>
+</html>
