@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<nav>
+			<router-link to="/home">home</router-link>
+			<router-link to="/article">article</router-link>
+			<router-link to="/about">about</router-link>
+		</nav>
+		<div>
+		    <!-- 路由出口 -->
+            <!-- 路由配置到的组件将渲染在这里 -->
+			<router-view></router-view>
+		</div>
+		
+	</div>
+
+	<template id="home">
+		<div>this is home component</div>
+	</template>
+	<template id="article">
+		<div>this is article component</div>
+	</template>
+	<template id="about">
+		<div>this is about component</div>
+	</template>
+	<template id="not-found">
+		<div>not found</div>
+	</template>	
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+	//1.定义路由组件:
+	var Home = Vue.extend({
+		template:'#home'
+	})
+
+	var Article = Vue.extend({
+		template:'#article'
+	})
+
+	var About = Vue.extend({
+		template:'#about'
+	})
+
+	var NotFound = Vue.extend({
+		template:'#not-found'
+	})	
+
+	//2.定义路由:
+	const routes = [
+		{
+			path:'/home',
+			component:Home
+		},
+		{
+			path:'/article',
+			component:Article
+		},
+		{
+			path:'/about',
+			component:About
+		},
+		//重定向
+		{ 
+            path:'/',
+            redirect:'/home'
+        },
+        //通配符路由
+        {
+        	path:'*',
+            component:NotFound
+        }			
+	]
+
+	//3.创建路由的实例:
+	const router = new VueRouter({
+		routes:routes
+	})
+
+	//4.创建和挂载根实例
+	var vm = new Vue({
+		el:'#app',
+		router:router,
+		data:{
+
+		}
+	})
+</script>
+</html>
