@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <router-link to="/home">home</router-link>
+            <router-link to="/articles">articles</router-link>
+        </nav>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <template id="home">
+        <div>Home page</div>
+    </template>
+
+    <template id="articles">
+        <div>Articles page and this click to 
+            <router-link to="/articles/12">
+                article-detail
+        	</router-link>
+        </div>
+    </template>
+
+    <template id="article-detail">
+        <div>article-detail message {{this.$route.params.id}}---{{id}}</div> <!-- 后面的id是props上的id  -->
+        <!-- <div>article-detail message is {{$route.params.id}}</div> -->
+    </template>
+
+    <template id="not-found">
+        <div>not-found</div>
+    </template>                
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+    //1.定义路由(组件)：
+    var Home = Vue.extend({
+        template:'#home'
+    })
+    var Articles = Vue.extend({
+        template:'#articles'
+    })
+    var ArticleDetail = Vue.extend({
+        template:'#article-detail',
+        props:['id'] //接收props参数
+    })
+    var NotFound = Vue.extend({
+        template:'#not-found'
+    })    
+    //2.定义路由：
+    var routes = [
+        { 
+            path:'/home',
+            component:Home 
+        },
+        {   path:'/articles',
+            component:Articles 
+        },
+        { 
+            path:'/articles/:id',
+            component:ArticleDetail,
+            props:true //通过props接收参数
+        },
+        { 
+            path:'*',
+            component:NotFound
+        }         
+    ]
+
+    //3.创建router的实例，然后传'routes'配制
+    var router = new VueRouter({
+        routes:routes // (缩写) 相当于：routes：routes
+    })
+
+    // 4.创建和挂载根实例
+    var vm = new Vue({
+        el:'#app',
+        router:router,
+        data:{
+        },
+    })
+
+
+</script>
+</html>
