@@ -1,0 +1,18 @@
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Choose Vue version, Babel, Router, CSS Pre-processors
+
+1 Choose a version of Vue.js that you want to start the project with 2.x
+
+2 Use history mode for router? (Requires proper server setup for index fallback in production) No
+
+3 Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): Less
+
+4 Where do you prefer placing config for Babel, ESLint, etc.?
+  In dedicated config files
+> In package.json
+
+5 Save this as a preset for future propjects ?NO
+
+6 cd todolist
+
+7 yarn serve

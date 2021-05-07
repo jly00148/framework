@@ -1,0 +1,5 @@
+1. 删除： todolist/src/assets/
+2. 修改文件名： todolist/src/views -> todolist/src/pages并清空文件
+3. 清空todolist/src/components/内的所有文件
+4. 根组件：todolist/src/App.vue
+5. 入口文件：main.js
