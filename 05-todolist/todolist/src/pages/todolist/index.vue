@@ -1,7 +1,7 @@
 <!--1.模板 -->
 <template>
-    <div class="home">
-        {{msg}} home page
+    <div class="todolist">
+        {{msg}} todolist page
     </div>
 </template>
 
