@@ -1,8 +1,0 @@
-1.克隆仓库:git clone git@github.com:vuejs/vue-devtools.git
-2.cd vue-devtools/
-3.npm i yarn -g(已安装不用再安装)
-4.yarn install
-5.yarn run build
-6.浏览器地址栏中输入：chrome://extensions
-7.点击加载已解压的扩展程序
-8.选择克隆的仓库地址，选择packages/shell-chrome/文件即可完成
