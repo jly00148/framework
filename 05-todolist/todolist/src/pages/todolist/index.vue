@@ -2,15 +2,62 @@
 <template>
     <div class="todolist">
         {{msg}} todolist page
+        <div class="head">
+            <input type="text" v-model="task" />
+            <button @click="addItem">提交</button>
+        </div>
+        <transition-group class="list" tag="ul" name="fade" appear>
+            <li class="item"
+                v-for="item in list"
+                :key="item.id"
+                @click="delItem(item.id)"
+            >
+                {{item.task}}
+            </li>
+        </transition-group>
+        <p>共计：{{total}}</p>
     </div>
 </template>
 
 <!-- 2.逻辑 -->
 <script>
+    import axios from 'axios';
+
     export default {
         data(){
             return {
-                msg:'hello'
+                msg:'hello',
+                list:[
+                    {id:1,task:'learn react'},
+                    {id:2,task:'learn vue'}
+                ],
+                task:''
+            }
+        },
+        methods:{
+            addItem(){
+                //禁止输入空格空字符串
+                if(this.task == ''){
+                    return
+                }
+                this.list.push({
+                    id:Date.now(),
+                    task:this.task,
+                })
+                this.task = ''
+            },
+            delItem(id){
+                const list = this.list.filter(item=>item.id !=id)
+                this.list = list
+            }
+        },
+        async mounted(){
+            const result = await axios.get('http://127.0.0.1:3000')
+            this.list = result.data
+        },
+        computed:{
+            total(){
+                return this.list.length
             }
         }
     }
@@ -23,5 +70,16 @@
     @priary-color:#f0f;
     div{
         color: @priary-color;
+    }
+    .todolist{
+        width: 300px;
+        height: 100px;
+        margin: 100px auto;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 0.5s;
+    }
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
     }
 </style>

@@ -23,6 +23,7 @@ const routes = [
 ]
 //4 根据路由创建router实例
 const router = new VueRouter({
+  mode:'history',//仅添加属性即可为h5路由
   routes
 })
 

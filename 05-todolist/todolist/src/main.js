@@ -2,6 +2,8 @@
 
 import Vue from 'vue'
 import App from './App.vue'
+
+// router实例
 import router from './router/index'
 
 //关闭生产环境模式更改提示
