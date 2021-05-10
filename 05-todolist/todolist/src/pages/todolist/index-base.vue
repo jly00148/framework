@@ -2,47 +2,49 @@
 <template>
     <div class="todolist">
         {{msg}} todolist page
-        <Head :addItem="addItem"></Head>
-        <List :list="list" :delItem="delItem"></List>
+        <div class="head">
+            <input type="text" v-model="task" />
+            <button @click="addItem">提交</button>
+        </div>
+        <transition-group class="list" tag="ul" name="fade" appear>
+            <li class="item"
+                v-for="item in list"
+                :key="item.id"
+                @click="delItem(item.id)"
+            >
+                {{item.task}}
+            </li>
+        </transition-group>
+        <p>共计：{{total}}</p>
     </div>
 </template>
 
 <!-- 2.逻辑 -->
 <script>
     import axios from 'axios';
-    import Head from '../../components/head/index';
-    import List from '../../components/list/index';
-    
+
     export default {
-        components:{
-            // 注册组件：
-            Head:Head,
-            List:List
-        },
         data(){
             return {
                 msg:'hello',
                 list:[
-                    {
-                        id:1,task:'learn react'
-                    },
-                    {
-                        id:2,task:'learn vue'
-                    }
+                    {id:1,task:'learn react'},
+                    {id:2,task:'learn vue'}
                 ],
                 task:''
             }
         },
         methods:{
-            addItem(task){
+            addItem(){
                 //禁止输入空格空字符串
-                if(task == ''){
+                if(this.task == ''){
                     return
                 }
                 this.list.push({
                     id:Date.now(),
-                    task:task
+                    task:this.task,
                 })
+                this.task = ''
             },
             delItem(id){
                 const list = this.list.filter(item=>item.id !=id)
@@ -74,5 +76,10 @@
         height: 100px;
         margin: 100px auto;
     }
-
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 0.5s;
+    }
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
 </style>

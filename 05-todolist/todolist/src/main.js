@@ -4,17 +4,16 @@ import Vue from 'vue'
 import App from './App.vue'
 
 // router实例
-import router from './router/index'
+import router from './router/index';
 
 //关闭生产环境模式更改提示
 Vue.config.productionTip = false
 
-//实例挂载到根组件上，$mount：实例上的$mount方法,d等价以下方法
+//实例挂载到根组件上，$mount：实例上的$mount方法,d等价以下方法,根组件App挂载到组件#app2上
 new Vue({
   router:router,
   render: h => h(App)
 }).$mount('#app2')
-
 
 // new Vue({
 //   el:'#app',
