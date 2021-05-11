@@ -9,7 +9,7 @@
                 {{item.task}}
             </li>
         </transition-group>
-        <!-- <p>共计：{{total}}</p> -->
+        <p>共计：{{this.$store.getters.total}}</p>
     </div>    
 </template>
 
@@ -18,10 +18,16 @@ export default {
     name:'List',
     methods:{
         handDelItem(id){
-            console.log(id)
+            this.$store.commit('delItem',id)
         }
     },
+    mounted(){
+        this.$store.dispatch('loadItem')
+    }
 }
+// v-for="item in this.$store.state.list"    可以直接获取store中list数据
+// {{this.$store.getters.total}}            获取总计数
+
 </script>
 
 

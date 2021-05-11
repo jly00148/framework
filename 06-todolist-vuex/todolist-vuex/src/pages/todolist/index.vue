@@ -10,7 +10,6 @@
 
 <!-- 2.逻辑 -->
 <script>
-    import axios from 'axios';
     import Head from '../../components/head/index';
     import List from '../../components/list/index';
     
@@ -20,45 +19,6 @@
             Head:Head,
             List:List
         },
-        // data(){
-        //     return {
-        //         msg:'hello',
-        //         list:[
-        //             {
-        //                 id:1,task:'learn react'
-        //             },
-        //             {
-        //                 id:2,task:'learn vue'
-        //             }
-        //         ],
-        //         task:''
-        //     }
-        // },
-        // methods:{
-        //     addItem(task){
-        //         //禁止输入空格空字符串
-        //         if(task == ''){
-        //             return
-        //         }
-        //         this.list.push({
-        //             id:Date.now(),
-        //             task:task
-        //         })
-        //     },
-        //     delItem(id){
-        //         const list = this.list.filter(item=>item.id !=id)
-        //         this.list = list
-        //     }
-        // },
-        // async mounted(){
-        //     const result = await axios.get('http://127.0.0.1:3000')
-        //     this.list = result.data
-        // },
-        // computed:{
-        //     total(){
-        //         return this.list.length
-        //     }
-        // }
     }
 </script>
 

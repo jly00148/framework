@@ -15,9 +15,18 @@
         },
         methods:{
             handAddItem(){
-                console.log(this.task)
+                if(this.task == ''){
+                    return
+                }
+                const payload = {
+                    id:Date.now(),
+                    task:this.task
+                }
+
+                this.$store.commit('addItem',payload)
+
                 this.task = ''
             }
-        }
+        },
     }
 </script>
