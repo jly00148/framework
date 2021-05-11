@@ -1,0 +1,1 @@
+重新安装脚手架，添加vuex选项，删除src,复制05-todolist/todolist/下的src
