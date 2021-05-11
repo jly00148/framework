@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    import { mapMutations }  from 'vuex';
     export default {
         name:'Head',
         data(){
@@ -14,6 +15,7 @@
             }
         },
         methods:{
+            ...mapMutations(['addItem']),
             handAddItem(){
                 if(this.task == ''){
                     return
@@ -23,8 +25,8 @@
                     task:this.task
                 }
 
-                this.$store.commit('addItem',payload)
-
+                // this.$store.commit('addItem',payload) // 注销使用辅助函数
+                this.addItem(payload)
                 this.task = ''
             }
         },
