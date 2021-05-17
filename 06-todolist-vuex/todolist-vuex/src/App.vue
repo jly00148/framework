@@ -7,13 +7,13 @@
     <!-- <Home></Home>
     <div>root</div> -->
     <nav>
-        <router-link to="/home">home</router-link>|
+        <router-link to="/home">home</router-link>
         <router-link to="/todolist">todolist</router-link>
     </nav>
     <div>
       <!-- 路由出口 -->
       <router-view></router-view>
-  </div> 
+    </div>
   </div>
 </template>
 
@@ -25,6 +25,7 @@
   //导出当前组件配置:
   export default {
     components:{
+      //注册组件
       Home:Home,
       Todolist:Todolist
     }
