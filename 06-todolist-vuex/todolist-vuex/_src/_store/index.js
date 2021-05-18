@@ -1,15 +1,20 @@
 //1.引入
 import Vue from 'vue';
 import Vuex from 'vuex';
-import todolist from '../components/list/store/index'
+import state from './state'
+import getters from './getters'
+import actions from './actions'
+import mutations from './mutations'
 
+//2.安装
 Vue.use(Vuex)
 
 //3.生成store实例，注意，整个应用只有一个store实例
 const store  = new Vuex.Store({
-    modules:{
-        todolist//命名空间
-    }
+    state:state,
+    getters:getters,//vuex的计算属性
+    actions:actions,
+    mutations:mutations
 })
 
 

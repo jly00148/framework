@@ -1,0 +1,5 @@
+辅助函数
+    1). mapState:将store中state映射到实例的计算属性
+    2). mapGetters:将store中getter映射到实例的计算属性
+    3). mapActions:将组件的methods映射为store.dispatch的调用
+    4). mapMutations:将组件的methods映射为store.commit的调用

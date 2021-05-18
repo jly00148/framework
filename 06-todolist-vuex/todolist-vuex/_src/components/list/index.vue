@@ -17,7 +17,7 @@
 // 辅助函数mapState，把store中state映射过来 ,v-for="item in this.$store.state.list"  改为 v-for="item in this.list"
 // 辅助函数mapGetters，把getters中映射过来 ,共计：{{this.$store.getters.total}}  改为 {{ this.total }}
     import { mapState,mapGetters,mapActions,mapMutations }  from 'vuex';
-    import { LOADITEM } from './store/type'
+    import { LOADITEM } from '../../store/type'
 
     export default {
         name:'List',
@@ -25,7 +25,7 @@
         computed:{
             // ...mapState(['list']) //方法同以下
            ...mapState({
-               list:state=>state.todolist.list
+               list:state=>state.list
 
            }),
             // ...mapGetters(['total']) ,计算总条数
