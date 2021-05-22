@@ -1,0 +1,1 @@
+.contailer{width:150px;height:150px;background-color:red}.contailer .box1{width:100px;height:100px;background-color:black}.contailer .box2{width:50px;height:50px;background-color:yellow}.contailer .box2:hover{background-color:green}.contailer .box2::before{content:'sad';position:relative;top:0;left:0;height:50px;width:50px;background-color:pink}

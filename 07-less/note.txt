@@ -1,0 +1,9 @@
+1.安装插件：easy less
+2.配制settings.json(左下角齿轮->设置->右上角打开设置)文件写入以下内容：
+        "less.compile": {
+        "compress": true, // 是否删除多余空白字符
+        "sourceMap": false, // 是否创建文件目录树，true的话会自动生成一个 .css.map 文件
+        "out": true, // 是否编译输出文件
+        "outExt": ".css", // 输出文件的后缀,默认为.css,小程序为wxss
+    }
+3.html文件引入css文件，在less文件中写入css，自动生成css代码
