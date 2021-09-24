@@ -9,7 +9,7 @@
     <div id="app">
         <nav>
             <router-link to="/home">home</router-link>
-            <router-link to="/articles/12">articles</router-link>
+            <router-link to="/articles">articles</router-link>
             <router-link to="/about">about</router-link>
         </nav>
         <div>
@@ -23,11 +23,17 @@
         <div>Home page</div>
     </template>
     <template id="articles">
-        <div>Articles page:{{$route.params.id}}</div>
+        <div>
+            <div>Articles pag</div>
+            <router-link to="/articles/12">articles details</router-link>
+        </div>
     </template>
     <template id="about">
         <div>About page</div>
-    </template>                
+    </template>
+    <template id="details">
+        <div>articles details page  id is {{this.$route.params.id}}</div>
+    </template>
 </body>
 <script src="js/vue.js"></script>
 <script src="js/vue-router.js"></script>
@@ -43,15 +49,20 @@
     var About = Vue.extend({
         template:'#about'
     })
-
+    var ArticlesDetails = Vue.extend({
+        template:'#details'
+    })
     //2.定义路由：
     var routes = [
         { 
             path:'/home',
-            component:Home 
+            component:Home
         },
-        {   path:'/articles:id',
-            component:Articles 
+        {   path:'/articles',
+            component:Articles
+        },
+        {   path:'/articles/:id',
+            component:ArticlesDetails
         },
         { 
             path:'/about',
