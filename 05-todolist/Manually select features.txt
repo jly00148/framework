@@ -1,3 +1,4 @@
+创建项目：vue create todolist
 ? Please pick a preset: Manually select features
 ? Check the features needed for your project: Choose Vue version, Babel, Router, CSS Pre-processors
 
@@ -13,6 +14,8 @@
 
 5 Save this as a preset for future propjects ?NO
 
-6 cd todolist
+6 回车后创建中....
 
-7 yarn serve
+7 创建完毕后 cd todolist/
+
+8 npm run serve 或者yarn serve(前提是全局安装yarn并且配置环境变量)

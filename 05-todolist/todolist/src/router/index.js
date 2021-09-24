@@ -8,7 +8,6 @@ Vue.use(VueRouter)
 import Home from '../pages/home/index'
 import Todolist from '../pages/todolist/index'
 
-
 //3 定义路由
 const routes = [
   {

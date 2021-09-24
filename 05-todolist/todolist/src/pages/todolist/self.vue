@@ -8,6 +8,7 @@
             <ul>
                 <li v-for = "(item,index) in items"
                     @click="del(index)"
+                    :key='index'
                 >
                     {{item}}
                 </li>
