@@ -1,7 +1,7 @@
 <!--
  * @Author: jly
  * @Date: 2021-09-11 07:18:48
- * @LastEditTime: 2021-12-30 01:30:14
+ * @LastEditTime: 2021-12-30 02:55:05
  * @FilePath: \vue.js\02-usage\003-插值.html
 -->
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
         <p v-text='message'></p><!-- 输出文本 -->
         <p v-html='rawHtml'></p>
         <p v-pre>{{message}}</p><!--标签具有v-pre,界面会原封不动地展示标签内的内容,不会解析mustache语法等 -->
-        <p v-clock>{{message}}</p><!--在界面和数据还没完全渲染的时候,它不会展示,当界面和数据渲染完成,它才显示-->
+        <p v-cloak>{{message}}</p><!--在界面和数据还没完全渲染的时候,它不会展示,当界面和数据渲染完成,它才显示-->
     </div>
 </body>
 <script src="js/vue.js"></script>
